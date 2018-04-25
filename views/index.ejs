@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.time').each(function () {
+                $(this).text(new Date($(this).text()).toLocaleString());
+            })
+        });
+    </script>
+</head>
+<body>
+<table id="customers">
+    <tr>
+        <th style="text-align: center" colspan="3"><h1>Facebook Upload + Getlink Tool - List Uploaded Files</h1></th>
+    </tr>
+    <tr>
+        <th style="text-align: center" colspan="3"><h2>Contacts : <a
+                        href="https://www.facebook.com/groups/streamservice/">Group Stream Service</a> OR
+                <a href="https://www.facebook.com/vanlong.pham.73157">VanLong.Pham</a></h2></th>
+    </tr>
+    <tr>
+        <th style="text-align: center">File Name</th>
+        <th style="text-align: center">Number of Videos on Facebook</th>
+        <th style="text-align: center">Created Time</th>
+    </tr>
+    <% for(var i = 0; i < allFiles.length; i++){ %>
+    <tr>
+        <td><a target="_blank" href="/getLinkSimple?file=<%= allFiles[i].file %>"><%= allFiles[i].file %></a></td>
+        <td style="text-align: center"><%= allFiles[i].numOfFiles %></td>
+        <td style="text-align: center" class="time"><%= allFiles[i].createdAt %></td>
+    </tr>
+    <% } %>
+</table>
+</body>
+</html>

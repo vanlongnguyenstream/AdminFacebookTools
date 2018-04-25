@@ -1,0 +1,13 @@
+/.idea/
+/public/
+/dist/
+/z.dist/
+#!dist/server.js
+/node_modules/
+/.vscode/
+/log/
+*log
+*.psd
+*.js
+*.map
+/FF.home.old
