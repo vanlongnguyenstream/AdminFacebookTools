@@ -10,11 +10,15 @@ async function getLink(videoId, token) {
         var url = 'https://graph.facebook.com/v2.12/' + videoId + '?access_token=' + token + '&debug=all&fields=source&format=json&method=get&pretty=0&suppress_http_code=1';
         request(url, function (err, res, body) {
             if (body) {
-                var json = JSON.parse(body);
-                rs([{
-                    "type": "mp4",
-                    "file": json['source']
-                }]);
+                try {
+                    var json = JSON.parse(body);
+                    rs([{
+                        "type": "mp4",
+                        "file": json['source']
+                    }]);
+                } catch (e) {
+                    rj(e);
+                }
             } else {
                 rj(err);
             }
